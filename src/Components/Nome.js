@@ -1,6 +1,6 @@
-function Nome (){
+function Nome ({aluno, idade}){
     return(
-      <span>Bem-vinda Ciclana</span>
+      <span>Bem-vindo(a) {aluno}! Idade: {idade} anos.</span>
     )
   }
 
