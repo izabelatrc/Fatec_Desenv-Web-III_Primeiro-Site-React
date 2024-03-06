@@ -1,15 +1,79 @@
-function Cadastro({nome, idade, email}) {
-        return (
-            <form>
-                <label>Nome:</label>
-                <input type="text" value={nome} /><br></br>
-                <label>Idade:</label>
-                <input type="number" value={idade} /><br></br>
-                <label>Email:</label>
-                <input type="text" value={email} /><br></br><br></br>
-                <button type="submit">Cadastrar</button>
-            </form>
-        )
-    }
-    
-    export default Cadastro
+import React from 'react';
+
+class Cadastro extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      nome: '',
+      idade: '',
+      email: '',
+      resultado: null
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
+  handleSubmit(event) {
+    alert('Um cadastro foi enviado!');
+    event.preventDefault();
+    this.setState({
+      resultado: {
+        nome: this.state.nome,
+        idade: this.state.idade,
+        email: this.state.email
+      }
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Nome:
+            <input
+              name="nome"
+              type="text"
+              value={this.state.nome}
+              onChange={this.handleChange} />
+          </label><br/><br/>
+          <label>
+            Idade:
+            <input
+              name="idade"
+              type="text"
+              value={this.state.idade}
+              onChange={this.handleChange} />
+          </label><br/><br/>
+          <label>
+            E-mail:
+            <input
+              name="email"
+              type="text"
+              value={this.state.email}
+              onChange={this.handleChange} />
+          </label><br/><br/>
+          <input type="submit" value="Enviar" />
+        </form>
+
+        {this.state.resultado && (
+          <div>
+            <h2>Resultados do Cadastro:</h2>
+            <p>Nome: {this.state.resultado.nome}</p>
+            <p>Idade: {this.state.resultado.idade}</p>
+            <p>Email: {this.state.resultado.email}</p>
+          </div>
+        )}
+      </div>
+    );
+  }
+}
+
+export default Cadastro;
