@@ -65,9 +65,8 @@ class Cadastro extends React.Component {
 
         {this.state.resultado && (
           <div>
-            <h2>Resultados do Cadastro:</h2>
-            <p>Nome: {this.state.resultado.nome}</p>
-            <p>Idade: {this.state.resultado.idade}</p>
+            <p>Bem vindo(a), {this.state.resultado.nome}!</p>
+            <p>Idade: {this.state.resultado.idade} anos</p>
             <p>Email: {this.state.resultado.email}</p>
           </div>
         )}
