@@ -22,7 +22,7 @@ class Cadastro extends React.Component {
 
   handleSubmit(event) {
     alert('Um cadastro foi enviado!');
-    event.preventDefault();
+    event.preventDefault(); //para não deixar o campo vazio
     this.setState({
       resultado: {
         nome: this.state.nome,
